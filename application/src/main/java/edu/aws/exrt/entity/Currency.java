@@ -12,15 +12,15 @@ import javax.persistence.Table;
 @Table(name = "currency")
 public class Currency {
 
-    @Column(name = "currency_code")
+    @Column(name = "code")
     @Id
-    private String currencyCode;
+    private String code;
 
     @Column(name = "name")
     private String name;
 
-    public String getCurrencyCode() {
-        return currencyCode;
+    public String getCode() {
+        return code;
     }
 
     public String getName() {

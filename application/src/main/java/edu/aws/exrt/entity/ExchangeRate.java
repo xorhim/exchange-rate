@@ -25,8 +25,8 @@ public class ExchangeRate {
     @Column(name = "rate")
     private Double rate;
 
-    @Column(name = "valid_since")
-    private LocalDateTime validSince;
+    @Column(name = "creation_time")
+    private LocalDateTime creationTime;
 
     public Long getExchangeRateId() {
         return exchangeRateId;
@@ -44,7 +44,7 @@ public class ExchangeRate {
         return rate;
     }
 
-    public LocalDateTime getValidSince() {
-        return validSince;
+    public LocalDateTime getCreationTime() {
+        return creationTime;
     }
 }

@@ -1,16 +1,17 @@
 package edu.aws.exrt.controller;
 
-import edu.aws.exrt.entity.Currency;
 import edu.aws.exrt.repository.CurrencyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Map;
 
 /**
  * @authro Ilya Y. Ivanov
  */
-@RestController
+@Controller
 @RequestMapping("/currencies")
 public class CurrencyController {
 
@@ -18,7 +19,8 @@ public class CurrencyController {
     CurrencyRepository currencies;
 
     @RequestMapping(method = RequestMethod.GET)
-    public Iterable<Currency> getCurrencies() {
-        return currencies.findAll();
+    public String getCurrencies(Map<String, Object> model) {
+        model.put("currencies", currencies.findAll());
+        return "currency/currencies-list";
     }
 }
