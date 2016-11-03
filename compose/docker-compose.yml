@@ -1,0 +1,29 @@
+version: '2'
+
+services:
+
+  exchange-rate-application:
+
+    image: xorhim/exchange-rate-application
+
+    ports:
+      - "8080:8080"
+
+    environment:
+      DS_HST: 'exchange-rate-postgres'
+      DS_DBN: 'exrt'
+      DS_USR: 'exrt_dba'
+      DS_PWD: 'exrt.super'
+
+    depends_on:
+      - "exchange-rate-postgres"
+
+    entrypoint:
+      /wait-for-db.sh
+
+  exchange-rate-postgres:
+
+    image: xorhim/exchange-rate-postgres
+
+    environment:
+      POSTGRES_PASSWORD: 'super123456'

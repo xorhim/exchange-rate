@@ -157,6 +157,11 @@
                             <directory>${project.build.directory}</directory>
                             <include>${project.build.finalName}.jar</include>
                         </resource>
+                        <resource>
+                            <targetPath>/</targetPath>
+                            <directory>${project.basedir}/src/main/shell</directory>
+                            <include>wait-for-db.sh</include>
+                        </resource>
                     </resources>
                 </configuration>
             </plugin>
