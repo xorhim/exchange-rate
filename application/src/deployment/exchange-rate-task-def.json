@@ -1,0 +1,46 @@
+{
+  "family": "exchange-rate",
+  "containerDefinitions": [
+    {
+      "name": "exchange-rate-container",
+      "image": "xorhim/exchange-rate-application",
+      "cpu": 10,
+      "memory": 500,
+      "portMappings": [
+        {
+          "containerPort": 8080,
+          "hostPort": 80
+        }
+      ],
+      "essential": true,
+      "environment": [
+        {
+          "name": "DS_URL",
+          "value": "jdbc:postgresql://postgres-dev.cn7ihuyqhbjd.us-west-2.rds.amazonaws.com:5432/exrt"
+        },
+        {
+          "name": "DS_USR",
+          "value": "exrt_dba"
+        },
+        {
+          "name": "DS_PWD",
+          "value": "exrt.super"
+        }
+      ],
+      "mountPoints": [
+        {
+          "sourceVolume": "exrt-volume",
+          "containerPath": "/tmp"
+        }
+      ]
+    }
+  ],
+  "volumes": [
+    {
+      "name": "exrt-volume",
+      "host": {
+        "sourcePath": "/tmp"
+      }
+    }
+  ]
+}
